@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Therapists</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="max-w-4xl mx-auto p-6">
+      <h1 class="text-2xl font-bold mb-4 text-center text-blue-700">
+        Our Therapists
+      </h1>
+      <div id="therapist-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Therapists will be added here -->
+      </div>
+    </div>
+
+    <script>
+      const therapists = [
+        {
+          name: "Dr. Amina Yusuf",
+          specialty: "Anxiety & Depression",
+          experience: "7 Years",
+          image: "images/dr.amina.jpg",
+        },
+        {
+          name: "Dr. Omar Ali",
+          specialty: "Youth Mental Health",
+          experience: "5 Years",
+          image: "images/mr.khalid.jpeg",
+        },
+        {
+          name: "Dr. Leyla Hassan",
+          specialty: "Stress & Trauma",
+          experience: "10 Years",
+          image: "images/dr.fatima.jpeg",
+        },
+      ];
+
+      const container = document.getElementById("therapist-list");
+      therapists.forEach((doc) => {
+        const nameEncoded = encodeURIComponent(doc.name);
+        container.innerHTML += `
+      <div class="bg-white shadow-md rounded p-4 text-center">
+        <img src="${doc.image}" alt="${doc.name}" class="mx-auto rounded-full w-24 h-24 mb-2">
+        <h2 class="text-lg font-semibold">${doc.name}</h2>
+        <p class="text-gray-600">${doc.specialty}</p>
+        <p class="text-gray-500 text-sm">Experience: ${doc.experience}</p>
+        <a href="booking.html?therapist=${nameEncoded}">
+          <button class="mt-2 bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">Book</button>
+        </a>
+      </div>
+    `;
+      });
+    </script>
+  </body>
+</html>
